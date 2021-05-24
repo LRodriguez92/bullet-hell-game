@@ -12,25 +12,32 @@ public class RadialBulletController : MonoBehaviour
 
 
     private Vector3 startPoint;                 // Starting position of the bullet
-    
+    private float secondsToDestroyBullets = 3f; // Destroys the instantiated bullets after x seconds
 
-    // Update is called once per frame
+
+    private void Start()
+    {
+        startPoint = transform.position;
+        InvokeRepeating("SpawnProjectile", 2f, 1f);
+    }
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
             startPoint = transform.position;
-            SpawnProjectile(numberOfProjectiles);
+            SpawnProjectile();
         }
+
+        
     }
 
     // Spawns x number of projectiles
-    private void SpawnProjectile(int _numberOfProjectiles)
+    private void SpawnProjectile()
     {
-        float angleStep = 360f / _numberOfProjectiles;
+        float angleStep = 360f / numberOfProjectiles;
         float angle = 0f;
 
-        for(int i = 0; i <= _numberOfProjectiles; i++)
+        for(int i = 0; i <= numberOfProjectiles; i++)
         {
             // Direction calculations
             float projectileDirXPosition = startPoint.x + Mathf.Sin((angle * Mathf.PI) / 180) * radius;
@@ -43,6 +50,9 @@ public class RadialBulletController : MonoBehaviour
             tmpObj.GetComponent<Rigidbody2D>().velocity = new Vector3(projectileMoveDirection.x, projectileMoveDirection.y, 0);
 
             angle += angleStep;
+
+            // Destroys bullets after x seconds
+            Destroy(tmpObj, secondsToDestroyBullets);
         }
     }
 }
