@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject winScreen;
+    public GameObject loseScreen;
+
+    private void Start()
     {
-        
+        winScreen.SetActive(false);
+        loseScreen.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DisplayWinScreen()
     {
-       
+        winScreen.SetActive(true);
+    }
+
+    public void DisplayLoseScreen()
+    {
+        loseScreen.SetActive(true);
     }
     
 }

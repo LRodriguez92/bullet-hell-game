@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D body;
     private float horizontal;
     private float vertical;
-
+    
+    public GameController gameController;
     public float runSpeed = 5f;
 
     void Start()
@@ -38,13 +39,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Die()
-    {
-        Debug.Log("You Lose!");
-    }
-
     private void Win()
     {
         Debug.Log("You Win!");
+        gameController.DisplayWinScreen();
     }
+
+    private void Die()
+    {
+        Debug.Log("You Lose!");
+        Debug.Log(gameController);
+        gameController.DisplayLoseScreen();
+    }
+
 }
