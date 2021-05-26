@@ -21,7 +21,6 @@ public class Timer : MonoBehaviour
     {
         if (timerIsRunning)
         {
-            Debug.Log(timeRemaining);
             if (timeRemaining > 0)
             {
                 timerText.text = timeRemaining.ToString("00:00");
