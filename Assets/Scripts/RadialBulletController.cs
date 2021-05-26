@@ -20,16 +20,6 @@ public class RadialBulletController : MonoBehaviour
         startPoint = transform.position;
         InvokeRepeating("SpawnProjectile", 2f, 1f);
     }
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            startPoint = transform.position;
-            SpawnProjectile();
-        }
-
-        
-    }
 
     // Spawns x number of projectiles
     private void SpawnProjectile()
