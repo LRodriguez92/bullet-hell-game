@@ -28,7 +28,7 @@ public class GameController : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    public void Restart()
+    private void Restart()
     {
         SceneManager.LoadScene(0);
     }
